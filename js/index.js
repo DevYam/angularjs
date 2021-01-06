@@ -71,5 +71,26 @@ app.controller("myController", ($scope)=>{
 
     //Like and dislike for a technology model creation ends
 
+    // Angular filters and limits
+
+
+    let NewEmployees = [
+        {name: "Divyam", Age : "23", Gender: "Male", Role: "Developer", dob: new Date("January 22, 2020")},
+        {name: "Abhishek", Age : "20", Gender: "Male", Role: "CEO", dob: new Date("September 23, 2020")},
+        {name: "Punnet", Age : "23", Gender: "Male", Role: "Developer", dob: new Date("July 24, 2020")},
+        {name: "Akshat", Age : "23", Gender: "Male", Role: "C", dob: new Date("March 22, 2020")}
+    ];
+
+    $scope.newEmployees = NewEmployees;
+
+    $scope.rowLimit = 3;
+
+    $scope.onLimitChange = ()=>{
+        // console.log("change called"+$scope.rowLimit)
+        if ($scope.rowLimit === null){
+            $scope.rowLimit = 0;
+        }
+    }
+
 
 })
