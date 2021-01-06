@@ -50,5 +50,26 @@ app.controller("myController", ($scope)=>{
     $scope.countries = countries;
     //model creation for nested ng-if complete
 
+    //Like and dislike for the technology model creation begins
+
+    let technologies = [
+        {name : "Java", likes : 0, dislikes: 0},
+        {name : "Python", likes : 0, dislikes: 0},
+        {name : "React", likes : 0, dislikes: 0},
+        {name : "Angular", likes : 0, dislikes: 0}
+    ];
+
+    $scope.technologies = technologies;
+
+    $scope.incrementLikes = (tech) =>{
+        tech.likes++;
+    }
+
+    $scope.incrementDisLikes = (tech) =>{
+        tech.dislikes++;
+    }
+
+    //Like and dislike for a technology model creation ends
+
 
 })
