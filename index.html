@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular js</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="js/angular.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body >
+<div id="main" ng-app="myApp" ng-controller="myController">
+    <img ng-src="{{img.path}}" alt="{{img.name}}" width="200" height="200">
+
+<!--    two way data binding example-->
+    <br>
+    <form>
+        <label> Enter a text
+            <input type="text" ng-model="message">
+        </label>
+        <br>
+       <p>{{message}}</p>
+    </form>
+
+
+    <!--    end two way data binding-->
+
+<!--    NG Repeat start-->
+    <table id="cTable">
+        <thead>
+        <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="emp in employee">
+            <td>{{emp.name}}</td>
+            <td>{{emp.Age}}</td>
+            <td>{{emp.Gender}}</td>
+            <td>{{emp.Role}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+<!--    NG repeat end-->
+
+<!--    Nested ng-if circus start-->
+    <ul>
+        <li ng-repeat="c in countries">
+            {{c.name}}
+        <ul>
+            <li ng-repeat="city in c.Cities">
+                {{city.name}}
+            </li>
+        </ul>
+
+        </li>
+    </ul>
+
+<!--    Like dislike circus begin-->
+    <table  >
+        <thead>
+        <tr>
+            <th>Technology</th>
+            <th>Likes</th>
+            <th>Dislikes</th>
+            <th>Likes/Dislikes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tech in technologies">
+            <td>{{tech.name}}</td>
+            <td>{{tech.likes}}</td>
+            <td>{{tech.dislikes}}</td>
+            <td>
+                <input type="button" value="Like" ng-click="incrementLikes(tech)">
+                <input type="button" value="DisLike" ng-click="incrementDisLikes(tech)">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+<br>
+<br>
+
+    <label>Number of rows to display
+        <input type="number" step="1" min="0" max="4" ng-model="rowLimit" ng-change="onLimitChange()">
+    </label>
+    <br>
+<br>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Role</th>
+            <th>DOB</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="emp in newEmployees | limitTo:rowLimit">
+            <td>{{emp.name | uppercase}}</td>
+            <td>{{emp.Age}}</td>
+            <td>{{emp.Gender | lowercase}}</td>
+            <td>{{emp.Role}}</td>
+            <td>{{emp.dob | date:"dd/MM/yyyy"}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>
