@@ -92,5 +92,15 @@ app.controller("myController", ($scope)=>{
         }
     }
 
+    $scope.sortSelection = "name";
+
+    /**
+     * When using search on a particular column on table we will have to
+     * set the initial value as undefined as with empty string it fails to
+     * create objects.
+     * @type {undefined}
+     */
+    $scope.searchText =undefined;
+
 
 })
