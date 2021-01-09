@@ -63,7 +63,7 @@
     </ul>
 
 <!--    Like dislike circus begin-->
-    <table  >
+    <table>
         <thead>
         <tr>
             <th>Technology</th>
@@ -112,11 +112,75 @@
         </tr>
         </tbody>
     </table>
+    <br>
+    <br>
+
+    <label>   Sort using :
+        <select ng-model="sortSelection"  >
+            <option value="name">Name</option>
+            <option value="age">Age</option>
+            <option value="dob">DOB</option>
+            <option value="Role">Role</option>
+            <option value="Gender">Gender</option>
+        </select>
+    </label>
+    <br>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+               <th>Name</th>
+               <th>Age</th>
+               <th>Gender</th>
+               <th>Role</th>
+               <th>DOB</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="emp in newEmployees | orderBy : sortSelection">
+            <td>{{emp.name}}</td>
+            <td>{{emp.Age}}</td>
+            <td>{{emp.Gender}}</td>
+            <td>{{emp.Role}}</td>
+            <td>{{emp.dob}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+<br>
+<br>
+<br>
+<!--    Search applied on name row-->
+
+<label> Search by name:
+    <input type="text" placeholder="Enter search keyword" ng-model="searchText.name">
+</label>
+<br>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Role</th>
+        <th>DOB</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="emp in newEmployees | filter : searchText">
+        <td>{{emp.name}}</td>
+        <td>{{emp.Age}}</td>
+        <td>{{emp.Gender}}</td>
+        <td>{{emp.Role}}</td>
+        <td>{{emp.dob}}</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<br>
 </div>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 </body>
